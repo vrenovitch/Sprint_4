@@ -1,5 +1,6 @@
 package praktikum;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -105,5 +106,11 @@ public class OrderTest {
         popUpPage.clickYesButton();
         // проверяем, что появилось всплывающее окно с сообщением об успешном создании заказа
         popUpPage.waitForMessageSuccessfulOrder();
+    }
+
+    @After
+    public void teardown() {
+        // закрываем браузер
+        driver.quit();
     }
 }
