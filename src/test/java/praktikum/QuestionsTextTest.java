@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class QuestionsTextTest {
     private WebDriver driver;
+    private HomePage homePage;
     private final String question;
     private final String expectedAnswer;
     private final String locatorQuestion;
@@ -44,18 +44,15 @@ public class QuestionsTextTest {
     public void openPage() {
         // драйвер для браузера Chrome
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+        //options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
-        // переходим на страницу тестового приложения
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        // кликаем на кнопку с принятием кук
-        driver.findElement(By.id("rcc-confirm-button")).click();
+        homePage = new HomePage(driver);
+        // открываем страницу и сразу нажимаем на куки
+        homePage.startPage();
     }
 
     @Test
     public void shouldBeEqual() {
-        // создаем объект класса главной страницы приложения
-        HomePage homePage = new HomePage(driver);
         // скроллим и нажимаем на вопрос
         homePage.clickQuestion(question);
         // получаем текст ответа

@@ -63,4 +63,3 @@ public class RentDataPage {
         driver.findElement(makeOrder).click();
     }
 }
-
