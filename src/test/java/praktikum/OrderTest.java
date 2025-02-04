@@ -65,7 +65,6 @@ public class OrderTest {
 
     @Test
     public void createOrder() {
-
         // нажимаем на кнопку Заказать
         homePage.clickOrderButton(orderButton);
 
