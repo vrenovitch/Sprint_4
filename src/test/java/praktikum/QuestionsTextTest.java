@@ -44,7 +44,7 @@ public class QuestionsTextTest {
     public void openPage() {
         // драйвер для браузера Chrome
         ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         homePage = new HomePage(driver);
         // открываем страницу и сразу нажимаем на куки
